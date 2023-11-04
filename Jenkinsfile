@@ -79,7 +79,14 @@ pipeline {
                     sh "docker rmi ${IMAGE_NAME}:latest"
                }
           }
-       }  
+       } 
+
+      stage("Trigger CD Pipeline") {
+            steps {
+                script {
+                    sh "curl -v -k --user clouduser:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'ec2-54-144-125-24.compute-1.amazonaws.com:8080/job/gitops-registed-app-cd/buildWithParameters?token=gitops-token'"
+                }
+            }    
     }
 	
 	
