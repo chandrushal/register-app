@@ -86,7 +86,7 @@ pipeline {
                 script {
 			 echo "Triggering CD Pipeline URL: ec2-18-206-172-144.compute-1.amazonaws.com:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token"
                     sh "curl -v -k --user jenkins:$JENKINS_API_TOKEN -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'ec2-18-206-172-144.compute-1.amazonaws.com:8080/job/gitops-register-app-cd/buildWithParameters?token=gitops-token'"
-                    //sh "curl -v -k --user jenkins:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'ec2-54-144-125-24.compute-1.amazonaws.com:8080/job/gitops-registed-app-cd/buildWithParameters?token=gitops-token'"
+                    //sh "curl -v -k --user jenkins:$(JENKINS_API_TOKEN) -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'ec2-54-144-125-24.compute-1.amazonaws.com:8080/job/gitops-registed-app-cd/buildWithParameters?token=gitops-token'"
                 }
             }    
     }
